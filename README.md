@@ -94,3 +94,11 @@ python3 manage.py migrate
 python3 manage.py shell 
 ```
 
+
+##  Django Admin
+
+Creating an admin user
+
+```
+python3 manage.py createsuperuser
+```
