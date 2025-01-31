@@ -66,3 +66,27 @@ Run
 python manage.py runserver
 ```
 > If you get an error page here, check that you’re going to http://localhost:8000/polls/ and not http://localhost:8000/.
+
+## Database setup
+We’ll set up the database, create your first model, and get a quick introduction to Django’s automatically-generated admin site.
+
+> Philosophy
+> Django apps are “pluggable”: You can use an app in multiple projects, and you can distribute apps, because they don’t have to be tied to a given Django installation.
+
+To include the app in our project, we need to add a reference to its configuration class in the INSTALLED_APPS setting. The PollsConfig class is in the polls/apps.py file, so its dotted path is 'polls.apps.PollsConfig'. Edit the mysite/settings.py file and add that dotted path to the INSTALLED_APPS setting. It’ll look like this:
+
+```
+    "polls.apps.PollsConfig",
+```
+
+Now Django knows to include the polls app. Let’s run:
+
+- Run python manage.py makemigrations to create migrations for those changes
+- The sqlmigrate command takes migration names and returns their SQL
+- Run python manage.py migrate to apply those changes to the database.
+
+```
+python3 manage.py makemigrations polls
+python3 manage.py sqlmigrate polls 0001
+python3 manage.py migrate
+```
